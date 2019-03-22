@@ -82,10 +82,9 @@ public class PlantWateringService extends IntentService {
             final String action = intent.getAction();
             if (ACTION_WATER_PLANTS.equals(action)) {
                 handleActionWaterPlants();
-              } else if (ACTION_UPDATE_PLANT_WIDGETS.equals(action)) {
+            } else if (ACTION_UPDATE_PLANT_WIDGETS.equals(action)) {
                 handleActionUpdatePlantWidgets();
             }
-
         }
     }
 
@@ -102,7 +101,7 @@ public class PlantWateringService extends IntentService {
         getContentResolver().update(
                 PLANTS_URI,
                 contentValues,
-                PlantContract.PlantEntry.COLUMN_LAST_WATERED_TIME+">?",
+                PlantContract.PlantEntry.COLUMN_LAST_WATERED_TIME + ">?",
                 new String[]{String.valueOf(timeNow - PlantUtils.MAX_AGE_WITHOUT_WATER)});
     }
 
